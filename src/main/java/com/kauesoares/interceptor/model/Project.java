@@ -12,6 +12,6 @@ public record Project(
     public boolean equals(Object obj) {
         return
                 obj instanceof Project &&
-                        identifier.equals(((Project) obj).identifier);
+                        this.identifier.equals(((Project) obj).identifier);
     }
 }
