@@ -1,7 +1,11 @@
 package com.kauesoares.interceptor.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("project")
 public record Project(
-        String identifier,
+        @Id String identifier,
         String name
 ) {
     @Override
