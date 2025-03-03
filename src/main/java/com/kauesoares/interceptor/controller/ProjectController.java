@@ -5,14 +5,14 @@ import com.kauesoares.interceptor.dto.res.ProjectResDTO;
 import com.kauesoares.interceptor.service.ProjectService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/projects")
@@ -33,6 +33,11 @@ public class ProjectController {
         URI uri = uriComponentsBuilder.path("/projects/{identifier}").buildAndExpand(res.identifier()).toUri();
 
         return ResponseEntity.created(uri).body(res);
+    }
+
+    @GetMapping
+    public List<ProjectResDTO> getAll() {
+        return this.service.getAll();
     }
 
 }
